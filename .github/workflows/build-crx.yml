@@ -1,0 +1,39 @@
+name: Build CRX Extension
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Create build directory
+      run: mkdir -p build
+
+    - name: Write private key to file
+      run: echo '${{ secrets.PRIVATE_KEY }}' > private.pem
+
+    - name: Build CRX
+      run: |
+        npm install -g chrome-extension-crx
+        crx pack . -o build/extension.crx -p private.pem
+
+    - name: Upload CRX as artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: extension-crx
+        path: build/extension.crx

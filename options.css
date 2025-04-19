@@ -1,0 +1,24 @@
+body {
+    padding: 15px;
+    min-width: 300px;
+    font-family: Arial, sans-serif;
+}
+.option-group {
+    margin-bottom: 20px;
+}
+label {
+    display: block;
+    margin: 10px 0;
+    cursor: pointer;
+}
+input[type="radio"] {
+    margin-right: 8px;
+}
+#save {
+    background: #0078d4;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}

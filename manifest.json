@@ -1,0 +1,28 @@
+{
+    "manifest_version": 3,
+    "name": "Middle Click Activator - 中键点击激活器",
+    "version": "1.0",
+    "description": "可配置中键打开位置的扩展",
+    "permissions": [
+        "tabs",
+        "scripting",
+        "storage"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js"],
+            "run_at": "document_start",
+            "all_frames": true
+        }
+    ],
+    "options_ui": {
+        "page": "options.html",
+        "open_in_tab": false
+    },
+    "icons": {
+    }
+}
