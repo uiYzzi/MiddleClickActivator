@@ -29,8 +29,8 @@ jobs:
 
     - name: Build CRX
       run: |
-        npm install -g chrome-extension-crx
-        crx pack . -o build/extension.crx -p private.pem
+        npm install -g crx
+        crx pack -o build/extension.crx -p private.pem
 
     - name: Upload CRX as artifact
       uses: actions/upload-artifact@v4
